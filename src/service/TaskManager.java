@@ -159,7 +159,7 @@ public class TaskManager {
         return Status.IN_PROGRESS;
     }
 
-    public HashMap<Long, Subtask> getSubtasksByEpicId (long id) {
+    public HashMap<Long, Subtask> getSubtasksByEpicId(long id) {
         return epics.get(id).getSubtasks();
     }
 
