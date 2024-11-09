@@ -5,7 +5,9 @@ import dto.Status;
 import dto.Subtask;
 import dto.Task;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class TaskManager {
     private long nextId = 1L;
@@ -17,16 +19,16 @@ public class TaskManager {
         return nextId++;
     }
 
-    public HashMap<Long, Task> getTasks() {
-        return tasks;
+    public List<Task> getTasks() {
+        return new ArrayList<>(tasks.values());
     }
 
-    public HashMap<Long, Subtask> getSubTasks() {
-        return subtasks;
+    public List<Subtask> getSubTasks() {
+        return new ArrayList<>(subtasks.values());
     }
 
-    public HashMap<Long, Epic> getEpics() {
-        return epics;
+    public List<Epic> getEpics() {
+        return new ArrayList<>(epics.values());
     }
 
     public Task getTaskById(long id) {

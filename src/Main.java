@@ -16,7 +16,6 @@ public class Main {
         taskManager.createTask(completeFun);
         System.out.println(taskManager.getTasks());
 
-
         Epic completeQuest = new Epic("Пройти квест", "Всех хорошенько победить");
         long epicId = taskManager.createEpic(completeQuest).getId();
 
