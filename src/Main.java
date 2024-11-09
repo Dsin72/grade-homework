@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Создаем задачки:");
         Task haveFun = new Task("Радоваться жизни", "Открыть калитку балдура");
         taskManager.createTask(haveFun);
-        Task completeFun = new Task( "Завершить дорогу приключений", "Прострелить колено");
+        Task completeFun = new Task("Завершить дорогу приключений", "Прострелить колено");
         taskManager.createTask(completeFun);
         System.out.println(taskManager.getTasks());
 
