@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 class ManagersTest {
     @Test
     @DisplayName("Проверяем тип возрашаемого getDefault объекта")
-    void getDefaultShouldInitializeInMemoryTaskManager(){
+    void getDefaultShouldInitializeInMemoryTaskManager() {
         assertInstanceOf(InMemoryTaskManager.class, Managers.getDefault(),
                 "getDefault должен возвращать инстанс класса InMemoryTaskManager");
     }
 
     @Test
     @DisplayName("Проверяем, что утилитарный класс возвращает готовый к работе экземпляр таск менеджера")
-    void getDefaultShouldInitializeReadyToWorkTaskManager(){
+    void getDefaultShouldInitializeReadyToWorkTaskManager() {
         TaskManager manager = Managers.getDefault();
         Task expectedTask = new Task("Раз", "Два");
 
@@ -40,7 +40,7 @@ class ManagersTest {
 
     @Test
     @DisplayName("Проверяем, что утилитарный класс возвращает готовый к работе экземпляр history менеджера")
-    void getDefaultShouldInitializeReadyToWorkHistoryManager(){
+    void getDefaultShouldInitializeReadyToWorkHistoryManager() {
         HistoryManager manager = Managers.getDefaultHistory();
 
         Task expectedTask = new Task("Раз", "Два");
