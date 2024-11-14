@@ -7,9 +7,6 @@ import dto.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,16 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@ExtendWith(MockitoExtension.class)
 class InMemoryTaskManagerTest {
     private static final String NAME = "Наименование";
     private static final String NAME_1 = "Наименование_1";
     private static final String DESCRIPTION = "Описание";
     private static final String DESCRIPTION_1 = "Описание_1";
 
-
-    @InjectMocks
-    InMemoryTaskManager taskManager;
+    private final TaskManager taskManager = Managers.getDefault();
 
     @BeforeEach
     public void initEach() {
