@@ -1,10 +1,15 @@
 package dto;
 
 public class Subtask extends Task {
-    private final long epicId;
+    private final Long epicId;
 
     public Subtask(String name, String description, long epicId) {
         super(name, description);
+        this.epicId = epicId;
+    }
+
+    public Subtask(Long id, String name, String description, long epicId) {
+        super(id, name, description);
         this.epicId = epicId;
     }
 

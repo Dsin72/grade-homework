@@ -9,6 +9,10 @@ public class Epic extends Task {
         super(name, description);
     }
 
+    public Epic(Long id, String name, String description) {
+        super(id, name, description);
+    }
+
     public void addSubtask(Subtask subtask) {
         subtasks.put(subtask.getId(), subtask);
     }
