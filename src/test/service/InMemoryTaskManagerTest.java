@@ -32,7 +32,7 @@ class InMemoryTaskManagerTest {
     InMemoryTaskManager taskManager;
 
     @BeforeEach
-    public void initEach(){
+    public void initEach() {
         taskManager.removeTasks();
         taskManager.removeSubtasks();
         taskManager.removeEpics();
@@ -229,7 +229,7 @@ class InMemoryTaskManagerTest {
         taskManager.createEpic(new Epic(0L, NAME_1, DESCRIPTION_1));
         taskManager.createEpic(new Epic(NAME, DESCRIPTION));
 
-        Subtask subtask0 =taskManager.createSubtask(new Subtask(2L, NAME_1, DESCRIPTION_1, 1L));
+        Subtask subtask0 = taskManager.createSubtask(new Subtask(2L, NAME_1, DESCRIPTION_1, 1L));
         Subtask subtask1 = taskManager.createSubtask(new Subtask(NAME, DESCRIPTION, 1L));
 
         assertEquals(new ArrayList<>(List.of(subtask0, subtask1)), taskManager.getSubtasks(),
@@ -412,7 +412,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     @DisplayName("Объект Subtask нельзя сделать своим же эпиком")
-    void checkEpicCanNotBeAddedAsASubtask(){
+    void checkEpicCanNotBeAddedAsASubtask() {
         assertThrows(RuntimeException.class,
                 () -> taskManager.createSubtask(new Subtask(0L, NAME, DESCRIPTION, 0L)));
     }
