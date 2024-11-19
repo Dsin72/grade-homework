@@ -14,6 +14,6 @@ class SubtaskTest {
         task1.setId(2L);
         task2.setId(2L);
 
-        assertEquals(task1, task2, "Наследники класса Task должны быть равны друг другу, если равен их id!");
+        Assertions.assertEquals(task1, task2, "Наследники класса Task должны быть равны друг другу, если равен их id!");
     }
 }

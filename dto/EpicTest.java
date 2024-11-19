@@ -14,6 +14,6 @@ class EpicTest {
         epic1.setId(1L);
         epic2.setId(1L);
 
-        assertEquals(epic1, epic2, "Наследники класса Task должны быть равны друг другу, если равен их id!");
+        Assertions.assertEquals(epic1, epic2, "Наследники класса Task должны быть равны друг другу, если равен их id!");
     }
 }
