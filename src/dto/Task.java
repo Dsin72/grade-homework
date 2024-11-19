@@ -2,13 +2,20 @@ package dto;
 
 import java.util.Objects;
 
-public class Task {
+public class Task implements Cloneable {
     private String name;
     private String description;
-    private long id;
+    private Long id;
     private Status status;
 
     public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.status = Status.NEW;
+    }
+
+    public Task(Long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.status = Status.NEW;
@@ -43,7 +50,7 @@ public class Task {
         this.description = description;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -67,5 +74,10 @@ public class Task {
                 ", id=" + id +
                 ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public Task clone() throws CloneNotSupportedException {
+        return (Task) super.clone();
     }
 }

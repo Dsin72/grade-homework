@@ -2,56 +2,62 @@ import dto.Epic;
 import dto.Status;
 import dto.Subtask;
 import dto.Task;
+import service.Managers;
 import service.TaskManager;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        TaskManager manager = Managers.getDefault();
 
         System.out.println("Создаем задачки:");
         Task haveFun = new Task("Радоваться жизни", "Открыть калитку балдура");
-        taskManager.createTask(haveFun);
+        manager.createTask(haveFun);
         Task completeFun = new Task("Завершить дорогу приключений", "Прострелить колено");
-        taskManager.createTask(completeFun);
-        System.out.println(taskManager.getTasks());
+        manager.createTask(completeFun);
+        System.out.println(manager.getTasks());
 
         Epic completeQuest = new Epic("Пройти квест", "Всех хорошенько победить");
-        long epicId = taskManager.createEpic(completeQuest).getId();
+        long epicId = manager.createEpic(completeQuest).getId();
 
         Subtask increaseStealth = new Subtask("Повысить навык скрытности", "Упорно тренируем гусиный шаг", epicId);
         Subtask findArmor = new Subtask("Разжиться понтовыми латами", "Своровать броню у кузнеца", epicId);
-        taskManager.createSubtask(increaseStealth);
-        taskManager.createSubtask(findArmor);
-        System.out.println(taskManager.getSubTasks());
-        System.out.println(taskManager.getEpics());
+        manager.createSubtask(increaseStealth);
+        manager.createSubtask(findArmor);
+        System.out.println(manager.getSubtasks());
+        System.out.println(manager.getEpics());
 
         System.out.println("\nОбновляем задачки:");
         haveFun.setStatus(Status.DONE);
-        taskManager.updateTask(haveFun);
+        manager.updateTask(haveFun);
         completeFun.setStatus(Status.IN_PROGRESS);
-        taskManager.updateTask(completeFun);
-        System.out.println(taskManager.getTasks());
+        manager.updateTask(completeFun);
+        System.out.println(manager.getTasks());
 
         increaseStealth.setStatus(Status.DONE);
-        taskManager.updateSubtask(increaseStealth);
+        manager.updateSubtask(increaseStealth);
         findArmor.setStatus(Status.IN_PROGRESS);
-        taskManager.updateSubtask(findArmor);
-        System.out.println(taskManager.getSubTasks());
+        manager.updateSubtask(findArmor);
+        System.out.println(manager.getSubtasks());
 
         completeQuest.setStatus(Status.DONE);
-        taskManager.updateEpic(completeQuest);
-        System.out.println(taskManager.getEpics());
+        manager.updateEpic(completeQuest);
+        System.out.println(manager.getEpics());
 
         System.out.println("\nУдаляем задачки:");
-        taskManager.removeTaskById(1);
-        System.out.println(taskManager.getTasks());
-        taskManager.removeSubtaskById(4);
-        System.out.println(taskManager.getSubTasks());
-        System.out.println(taskManager.getEpics());
+        manager.removeTaskById(1);
+        System.out.println(manager.getTasks());
+        manager.removeSubtaskById(4);
+        System.out.println(manager.getSubtasks());
+        System.out.println(manager.getEpics());
 
-        taskManager.removeEpicById(3);
-        System.out.println(taskManager.getSubTasks());
-        System.out.println(taskManager.getEpics());
+        manager.removeEpicById(3);
+        System.out.println(manager.getSubtasks());
+        System.out.println(manager.getEpics());
+
+        System.out.println("\nСмотрим историю:");
+        for (Task task : manager.getHistory()) {
+            System.out.println(task);
+        }
     }
 }
